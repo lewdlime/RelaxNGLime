@@ -1,0 +1,335 @@
+# product-feed-simplified
+default namespace bv = "http://www.bazaarvoice.com/xs/PRR/ProductFeed/14.5"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+namespace svrl = "http://purl.oclc.org/dsdl/svrl"
+
+# Reminder: Embedded Schematron rules should only be annotated
+# from within the scope of an 'element', 'attribute', or datatype
+# definition. If using the Sun MSV tool with embedded Schematron
+# add-on, this is further restricted to only allowing Schematron
+# rules immediately beneath 'element' definitions.
+
+start =
+    element Feed {
+        attribute name { xsd:string },
+        attribute extractDate { xsd:dateTime },
+        attribute incremental { xsd:boolean },
+        attribute supplemental { xsd:boolean }?,
+        attribute generator { xsd:string }?,
+        element Brands {
+            element Brand {
+                [ a:defaultValue = "false" ] attribute removed { xsd:boolean }?,
+                [ a:defaultValue = "false" ] attribute disabled { xsd:boolean }?,
+                (element Name { xsd:string }?
+                 & element Names {
+                       element Name {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element ExternalId {
+                       xsd:string { pattern = "[^/]+" }
+                   }?
+                 & element Attributes {
+                       element Attribute {
+                           attribute id {
+                              xsd:string { pattern = "[^/]+" }
+                           },
+                           (element Value {
+                                attribute locale {
+                                    xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                }?,
+                                xsd:string
+                            }+
+                            | element UrlValue {
+                                  attribute locale {
+                                      xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                  }?,
+                                  xsd:anyURI
+                              }+)
+                       }*
+                   }?)
+            }*
+        }?,
+        element Categories {
+            element Category {
+                [ a:defaultValue = "false" ] attribute removed { xsd:boolean }?,
+                [ a:defaultValue = "false" ] attribute disabled { xsd:boolean }?,
+                (element ExternalId {
+                     xsd:string { pattern = "[^/]+" }
+                 }?
+                 & element ParentExternalId {
+                       xsd:string { pattern = "[^/]+" }
+                   }?
+                 & element Name { xsd:string }?
+                 & element Names {
+                       element Name {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element CategoryPageUrl { xsd:anyURI }?
+                 & element CategoryPageUrls {
+                       element CategoryPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element CategoryQAPageUrl { xsd:anyURI }?
+                 & element CategoryQAPageUrls {
+                       element CategoryQAPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element CategoryStoriesPageUrl { xsd:anyURI }?
+                 & element CategoryStoriesPageUrls {
+                       element CategoryStoriesPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element ReviewsPageTitle { xsd:string }?
+                 & element ReviewsPageTitles {
+                       element PageTitle {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element ReviewsPageMetaDescription { xsd:string }?
+                 & element ReviewsPageMetaDescriptions {
+                       element MetaDescription {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element ProductPageUrlPattern { xsd:anyURI }?
+                 & element ProductPageUrlPatterns {
+                       element ProductPageUrlPattern {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element Attributes {
+                       element Attribute {
+                           attribute id {
+                               xsd:string { pattern = "[^/]+" }
+                           },
+                           (element Value {
+                                xsd:string,
+                                attribute locale {
+                                    xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                }?
+                            }+
+                            | element UrlValue {
+                                  xsd:anyURI,
+                                  attribute locale {
+                                      xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                  }?
+                              }+)
+                       }*
+                   }?
+                 & element ImageUrl { xsd:anyURI }?
+                 & element ImageUrls {
+                       element ImageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?)
+            }*
+        }?,
+        element Products {
+            element Product {
+                [ a:defaultValue = "false" ] attribute removed { xsd:boolean }?,
+                [ a:defaultValue = "false" ] attribute disabled { xsd:boolean }?,
+                (element ExternalId {
+                     xsd:string { pattern = "[^/]+" }
+                 }
+                 & element Name { xsd:string }?
+                 & element Names {
+                       element Name {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element Description { xsd:string }?
+                 & element Descriptions {
+                       element Description {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element BrandExternalId {
+                       xsd:string { pattern = "[^/]+" }
+                   }?
+                 & element Brand {
+                       (element Name { xsd:string }?
+                        & element Names {
+                              element Name {
+                                  xsd:string,
+                                  attribute locale {
+                                      xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                  }
+                              }+
+                          }?
+                        & element ExternalId {
+                              xsd:string { pattern = "[^/]+" }
+                          }?
+                        & element Attributes {
+                              element Attribute {
+                                  (element Value {
+                                       xsd:string,
+                                       attribute locale {
+                                           xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                       }?
+                                   }+
+                                   | element UrlValue {
+                                         xsd:anyURI,
+                                         attribute locale {
+                                             xsd:string {
+                                                 pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?"
+                                             }
+                                         }?
+                                     }+),
+                                  attribute id {
+                                      xsd:string { pattern = "[^/]+" }
+                                  }
+                              }*
+                          }?)
+                   }?
+                 & element Attributes {
+                       element Attribute {
+                            attribute id {
+                                xsd:string { pattern = "[^/]+" }
+                            },
+                           (element Value {
+                                xsd:string,
+                                attribute locale {
+                                    xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                }?
+                            }+
+                            | element UrlValue {
+                                  xsd:anyURI,
+                                  attribute locale {
+                                      xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                                  }?
+                              }+)
+                       }*
+                   }?
+                 & element CategoryExternalId {
+                       xsd:string { pattern = "[^/]+" }
+                   }?
+                 & element CategoryName { xsd:string }?
+                 & element CategoryPath {
+                       element CategoryName { xsd:string }*
+                   }?
+                 & element ProductPageUrl { xsd:anyURI }?
+                 & element ProductPageUrls {
+                       element ProductPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element ProductReviewsPageUrl { xsd:anyURI }?
+                 & element ProductReviewsPageUrls {
+                       element ProductReviewsPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element ProductQAPageUrl { xsd:anyURI }?
+                 & element ProductQAPageUrls {
+                       element ProductQAPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element ProductStoriesPageUrl { xsd:anyURI }?
+                 & element ProductStoriesPageUrls {
+                       element ProductStoriesPageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element ReviewsPageTitle { xsd:string }?
+                 & element ReviewsPageTitles {
+                       element PageTitle {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element ReviewsPageMetaDescription { xsd:string }?
+                 & element ReviewsPageMetaDescriptions {
+                       element MetaDescription {
+                           attribute locale {
+                                xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:string
+                       }+
+                   }?
+                 & element ImageUrl { xsd:anyURI }?
+                 & element ImageUrls {
+                       element ImageUrl {
+                           attribute locale {
+                               xsd:string { pattern = "[a-z]{2}(_[A-Z]{2}(_[0-9a-zA-Z_]+)?)?" }
+                           }?,
+                           xsd:anyURI
+                       }+
+                   }?
+                 & element ModelNumbers {
+                       element ModelNumber {
+                           xsd:string { pattern = "\S.*" }
+                       }+
+                   }?
+                 & element ManufacturerPartNumbers {
+                       element ManufacturerPartNumber {
+                           xsd:string { pattern = "\S.*" }
+                       }+
+                   }?
+                 & element EANs {
+                       element EAN { xsd:string }+
+                   }?
+                 & element UPCs {
+                       element UPC { xsd:string }+
+                   }?
+                 & element ISBNs {
+                       element ISBN { xsd:string }+
+                   }?)
+            }*
+        }
+    }
+# =========================

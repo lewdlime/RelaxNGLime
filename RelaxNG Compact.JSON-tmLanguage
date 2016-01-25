@@ -1,0 +1,128 @@
+{
+    "uuid": "85F32571-780F-4AAC-BA70-C2229E0B1BDA", 
+    "fileTypes": [
+        "rnc"
+    ], 
+    "scopeName": "source.rnc", 
+    "foldingStartMarker": "\\{\\s*$", 
+    "patterns": [
+        {
+            "match": "[=,&|?*+\\\\]", 
+            "name": "constant.character.rnc"
+        }, 
+        {
+            "match": "#[^#].*$", 
+            "name": "comment.line.number-sign.rnc"
+        }, 
+        {
+            "match": "##.*$", 
+            "name": "support.class.rnc"
+        }, 
+        {
+            "match": "\\bstart\\b", 
+            "name": "keyword.control.rnc"
+        }, 
+        {
+            "match": "\\b(parent|externalRef|grammar|div|include|namespace|default|datatypes)\\b", 
+            "name": "keyword.operator.rnc"
+        }, 
+        {
+            "match": "\\b(list|mixed|notAllowed|text|token|empty)\\b", 
+            "name": "storage.type.rnc"
+        }, 
+        {
+            "match": "\\b(xsd\\:(string|boolean|float|double|decimal|date(Time)?|duration|hexBinary|base64Binary|anyURI|ID(REFS)?|ENTIT(Y|IES)|NOTATION|normalizedString|token|language|IDREFS|NMTOKEN(S)?|(Q|NC)?Name|integer|nonNegativeInteger|positiveInteger|nonPositiveInteger|negativeInteger|byte|int|long|short|unsignedByte|unsignedInt|unsignedLong|unsignedShort|time|gYearMonth|gYear|gMonthDay|gDay|gMonth))", 
+            "name": "storage.type.rnc"
+        }, 
+        {
+            "captures": {
+                "2": {
+                    "name": "variable.parameter.rnc"
+                }, 
+                "1": {
+                    "name": "keyword.operator.rnc"
+                }
+            }, 
+            "match": "\\b(attribute)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*\\{", 
+            "name": "meta.declaration.attribute.rnc"
+        }, 
+        {
+            "captures": {
+                "2": {
+                    "name": "variable.parameter.rnc"
+                }, 
+                "1": {
+                    "name": "keyword.operator.rnc"
+                }
+            }, 
+            "match": "\\b(element)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*\\{", 
+            "name": "meta.declaration.element.rnc"
+        }, 
+        {
+            "begin": "\"", 
+            "patterns": [
+                {
+                    "match": "\\\\.", 
+                    "name": "constant.character.escape.rnc"
+                }
+            ], 
+            "end": "\"", 
+            "name": "string.quoted.double.rnc"
+        }, 
+        {
+            "begin": "'", 
+            "patterns": [
+                {
+                    "match": "\\\\.", 
+                    "name": "constant.character.escape.rnc"
+                }
+            ], 
+            "end": "'", 
+            "name": "string.quoted.single.rnc"
+        }, 
+        {
+            "begin": "\"\"\"", 
+            "patterns": [
+                {
+                    "match": "\\\\.", 
+                    "name": "constant.character.escape.rnc"
+                }
+            ], 
+            "end": "\"\"\"", 
+            "name": "string.quoted.triple.rnc"
+        }, 
+        {
+            "begin": "'''", 
+            "patterns": [
+                {
+                    "match": "\\\\.", 
+                    "name": "constant.character.escape.rnc"
+                }
+            ], 
+            "end": "'''", 
+            "name": "string.quoted.triple.rnc"
+        }, 
+        {
+            "begin": "\\[", 
+            "patterns": [
+                {
+                    "match": "\\\\.", 
+                    "name": "constant.character.escape.rnc"
+                }
+            ], 
+            "end": "\\]", 
+            "name": "support.class.rnc"
+        }, 
+        {
+            "captures": {
+                "1": {
+                    "name": "variable.parameter.rnc"
+                }
+            }, 
+            "match": "\\b([a-zA-Z][a-zA-Z_0-9]*)\\s*=", 
+            "name": "meta.grammar_production.rnc"
+        }
+    ], 
+    "foldingStopMarker": "^\\s*\\}", 
+    "name": "Relax NG Compact"
+}
