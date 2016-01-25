@@ -74,7 +74,7 @@ patterns:
     name: constant.character.escape.rnc
 
 - name: meta.grammar_production.rnc
-  match: \b([a-zA-Z][a-zA-Z_0-9]*)\s*=
+  match: \b([a-zA-Z][a-zA-Z_0-9\.]*)\s*=
   captures:
     '1': {name: variable.parameter.rnc}
 foldingStartMarker: \{\s*$

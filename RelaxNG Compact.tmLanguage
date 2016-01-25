@@ -189,7 +189,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b([a-zA-Z][a-zA-Z_0-9]*)\s*=</string>
+			<string>\b([a-zA-Z][a-zA-Z_0-9\.]*)\s*=</string>
 			<key>name</key>
 			<string>meta.grammar_production.rnc</string>
 		</dict>

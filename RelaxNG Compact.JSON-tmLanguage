@@ -119,7 +119,7 @@
                     "name": "variable.parameter.rnc"
                 }
             }, 
-            "match": "\\b([a-zA-Z][a-zA-Z_0-9]*)\\s*=", 
+            "match": "\\b([a-zA-Z][a-zA-Z_0-9\\.]*)\\s*=", 
             "name": "meta.grammar_production.rnc"
         }
     ], 
