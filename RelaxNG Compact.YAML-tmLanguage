@@ -70,10 +70,9 @@ patterns:
     name: constant.character.escape.rnc
 
 - name: support.class.rnc
-  begin: '(\[)\s*([a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*)'
+  begin: '(\[)\s*'
   beginCaptures:
     '1': {name: support.class.annotation.rnc}
-    '2': {name: entity.other.inherited-class.rnc}
   end: '\s*(\])'
   patterns:
   - include: $self
@@ -85,7 +84,8 @@ patterns:
   captures:
     '1': {name: variable.parameter.rnc}
 
-
+- name: invalid.illegal.rnc
+  match: '[\]})]'
 
 foldingStartMarker: \{\s*$
 foldingStopMarker: ^\s*\}
