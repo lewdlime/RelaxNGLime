@@ -28,7 +28,11 @@
         }, 
         {
             "name": "storage.type.rnc", 
-            "match": "\\b(xsd\\:(string|boolean|float|double|decimal|date(Time)?|duration|hexBinary|base64Binary|anyURI|ID(REF(S)?)?|ENTIT(Y|IES)|NOTATION|normalizedString|token|language|IDREFS|NMTOKEN(S)?|(Q|NC)?Name|integer|nonNegativeInteger|positiveInteger|nonPositiveInteger|negativeInteger|byte|int|long|short|unsignedByte|unsignedInt|unsignedLong|unsignedShort|time|gYearMonth|gYear|gMonthDay|gDay|gMonth))"
+            "match": "\\b(xsd\\:(string|boolean|float|double|decimal|date(Time)?|duration|hexBinary|base64Binary|anyURI|ID(REF(S)?)?|ENTIT(Y|IES)|NOTATION|normalizedString|token|language|IDREFS|NMTOKEN(S)?|(Q|NC)?Name|integer|nonNegativeInteger|positiveInteger|nonPositiveInteger|negativeInteger|byte|int|long|short|unsignedByte|unsignedInt|unsignedLong|unsignedShort|time|gYearMonth|gYear|gMonthDay|gDay|gMonth))\\b"
+        }, 
+        {
+            "name": "storage.type.rnc", 
+            "match": "\\b([a-zA-Z][a-zA-Z0-9_]*:[a-zA-Z][a-zA-Z0-9_]*)\\b"
         }, 
         {
             "name": "meta.declaration.attribute.rnc", 
