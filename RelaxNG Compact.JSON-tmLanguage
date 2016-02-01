@@ -43,24 +43,30 @@
         }, 
         {
             "name": "meta.declaration.attribute.rnc", 
-            "match": "\\b(attribute)\\s+(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\\s*\\{\\b", 
+            "match": "\\b(attribute)\\b\\s+\\b(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\\b\\s*\\{", 
             "captures": {
                 "1": {
                     "name": "keyword.operator.rnc"
                 }, 
                 "2": {
                     "name": "variable.parameter.rnc"
+                }, 
+                "3": {
+                    "name": "variable.parameter.rnc"
                 }
             }
         }, 
         {
             "name": "meta.declaration.element.rnc", 
-            "match": "\\b(element)\\s+(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\\s*\\{\\b", 
+            "match": "\\b(element)\\b\\s+\\b(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\\b\\s*\\{", 
             "captures": {
                 "1": {
                     "name": "keyword.operator.rnc"
                 }, 
                 "2": {
+                    "name": "variable.parameter.rnc"
+                }, 
+                "3": {
                     "name": "variable.parameter.rnc"
                 }
             }

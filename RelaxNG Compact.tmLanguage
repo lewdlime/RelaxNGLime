@@ -81,9 +81,14 @@
 					<key>name</key>
 					<string>variable.parameter.rnc</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.rnc</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(attribute)\s+(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\s*\{\b</string>
+			<string>\b(attribute)\b\s+\b(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\b\s*\{</string>
 			<key>name</key>
 			<string>meta.declaration.attribute.rnc</string>
 		</dict>
@@ -100,9 +105,14 @@
 					<key>name</key>
 					<string>variable.parameter.rnc</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.rnc</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b(element)\s+(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\s*\{\b</string>
+			<string>\b(element)\b\s+\b(([a-zA-Z][a-zA-Z0-9_]*:)?[a-zA-Z][a-zA-Z_0-9]*)\b\s*\{</string>
 			<key>name</key>
 			<string>meta.declaration.element.rnc</string>
 		</dict>
